@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>List Employees</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"  />
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
 </head>
 <body>
     <div class="container">
         <h2>List Employees</h2>
         <hr />
-        <table class="table table-bordered table-striped">
+        <a th:href="@{/addEmployeeForm}" class="btn btn-primary mb-2">Add Employee</a>
+        <table class="table table-bordered table-striped" id="employeeTable">
             <thead>
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Department</th>
+                    <td>Actions</td>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +24,10 @@
                     <td th:text="${employee.name}"></td>
                     <td th:text="${employee.email}"></td>
                     <td th:text="${employee.department}"></td>
+                    <td>
+                        <a th:href="@{/showUpdateForm(employeeId=${employee.id})}" class="btn btn-info">Update</a>
+                        <a th:href="@{/deleteEmployee(employeeId=${employee.id})}" class="btn btn-danger">Delete</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
